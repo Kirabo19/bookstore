@@ -25,7 +25,7 @@ const BooksList = () => {
   ));
   return (
     <ul>
-     <li></li>
+      {list}
     </ul>
   );
 };
