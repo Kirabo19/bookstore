@@ -5,6 +5,7 @@ import Form from '../components/form';
 const BooksPage = () => (
   <>
     <BooksList />
+    <hr className="separator_line" />
     <Form />
   </>
 );
