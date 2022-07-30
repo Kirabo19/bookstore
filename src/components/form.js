@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addBook } from '../redux/books/books';
+import { addBookReducer } from '../redux/books/books';
 
 const form = () => {
   const bookInfo = {
@@ -9,13 +9,9 @@ const form = () => {
     author: '',
     category: '',
   };
-
   const dispatch = useDispatch();
-
   const [book, setBook] = useState(bookInfo);
-
   const { title, category, author } = book;
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setBook((prev) => ({
@@ -23,7 +19,6 @@ const form = () => {
       [name]: value,
     }));
   };
-
   const submitBookToStore = (event) => {
     event.preventDefault();
     const newBook = {
@@ -33,7 +28,7 @@ const form = () => {
       category,
     };
 
-    dispatch(addBook(newBook));
+    dispatch(addBookReducer(newBook));
     setBook(bookInfo);
   };
 
@@ -42,10 +37,13 @@ const form = () => {
       <h2>ADD NEW BOOK</h2>
       <form onSubmit={submitBookToStore}>
         <input name="title" type="text" value={title} placeholder="Title" onChange={handleChange} />
-        <input name="author" type="text" value={author} placeholder="Author" onChange={handleChange} />
         <select name="category" id="categories" onChange={handleChange}>
-          <option value="none">Category</option>
+          <option hidden value="none">Category</option>
           <option value="Action">Action</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Historical">Historical</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Science">Science</option>
           <option value="Science Fiction">Science Fiction</option>
           <option value="Economy">Economy</option>
         </select>
@@ -54,4 +52,5 @@ const form = () => {
     </>
   );
 };
+
 export default form;

@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 const Book = (props) => {
   const {
-    category, title, click, id, author,
+    category, title, click, id,
   } = props;
   return (
     <div>
       <p>{category}</p>
       <h2>{title}</h2>
-      <p>{author}</p>
       <ul>
         <li>
           <button type="button">Comments</button>
@@ -30,15 +29,12 @@ const Book = (props) => {
     </div>
   );
 };
-
 Book.propTypes = {
 
   category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
   click: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
 
 };
-
 export default Book;
