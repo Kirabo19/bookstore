@@ -19,7 +19,7 @@ export const removeBook = (id) => ({
 
 /// DELETE BOOK IN API ///
 
-export const removeBookReducer = (id) => (dispatch) => axios.delete(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/zZ7EZqcy750FMbbnBRfe/books/${id}`, {
+export const removeBookReducer = (id) => (dispatch) => axios.delete(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/tLF0fZ67SalN9ShofAeN/books/${id}`, {
   item_id: id,
 })
   .then(() => {
@@ -27,15 +27,17 @@ export const removeBookReducer = (id) => (dispatch) => axios.delete(`https://us-
   });
 
 ///  POST NEW BOOK TO API ///
-export const addBookReducer = (newBook) => (dispatch) => axios.post('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/zZ7EZqcy750FMbbnBRfe/books', {
-  item_id: newBook.id,
-  title: newBook.title,
-  category: newBook.category,
-})
-  .then(() => {
-    dispatch(addBook(newBook));
-  });
-
+export const addBookReducer = (newBook) => (dispatch) => {
+  axios.post('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/tLF0fZ67SalN9ShofAeN/books', {
+    item_id: newBook.id,
+    title: newBook.title,
+    author: newBook.author,
+    category: newBook.category,
+  })
+    .then(() => {
+      dispatch(addBook(newBook));
+    });
+};
 ///  FETCH_BOOK_SUCCEED ///
 export const fetchBookSucceed = (booksList) => ({
   type: FETCH_BOOK_SUCCEED,
@@ -51,7 +53,7 @@ export const fetchBookFailed = (error) => ({
 /// FETCH DATA FROM API ///
 
 export const getBooks = () => (dispatch) => {
-  axios.get('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/zZ7EZqcy750FMbbnBRfe/books')
+  axios.get('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/tLF0fZ67SalN9ShofAeN/books')
     .then((res) => {
       const arr = [];
       const books = res.data;

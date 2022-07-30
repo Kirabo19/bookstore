@@ -9,13 +9,9 @@ const form = () => {
     author: '',
     category: '',
   };
-
   const dispatch = useDispatch();
-
   const [book, setBook] = useState(bookInfo);
-
   const { title, category, author } = book;
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setBook((prev) => ({
@@ -23,7 +19,6 @@ const form = () => {
       [name]: value,
     }));
   };
-
   const submitBookToStore = (event) => {
     event.preventDefault();
     const newBook = {
@@ -57,4 +52,5 @@ const form = () => {
     </>
   );
 };
+
 export default form;
